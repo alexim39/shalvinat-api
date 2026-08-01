@@ -6,7 +6,7 @@ COPY package.json package-lock.json* ./
 RUN npm ci
 
 COPY tsconfig.json ./
-COPY src/ ./src/
+COPY src ./src/
 
 RUN npm run build
 

@@ -53,15 +53,6 @@ export function createApp() {
     }),
   );
 
-  if (env.NODE_ENV === "production") {
-    app.use((req, res, next) => {
-      if (req.secure || req.header("x-forwarded-proto") === "https") {
-        return next();
-      }
-      return res.redirect(301, `https://${req.headers.host}${req.originalUrl}`);
-    });
-  }
-
   app.get("/health", (_req, res) => {
     res.json({ status: "ok", service: "shalvinat-hms-api" });
   });
